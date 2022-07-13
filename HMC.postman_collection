@@ -1,0 +1,3648 @@
+{
+	"info": {
+		"_postman_id": "812bc4dd-4aa1-4147-b697-13b735138a5f",
+		"name": "4. HMC Unified _ w additions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16904411"
+	},
+	"item": [
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "GW auth-authentication",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserName\":\"bigboss\",\r\n    \"PassWord\":\"B!gB0$s\",\r\n    \"Scope\":\"SMS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway}}/auth/authentication",
+							"host": [
+								"{{Gateway}}"
+							],
+							"path": [
+								"auth",
+								"authentication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GW auth-withToken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserName\":\"bigboss\",\r\n    \"PassWord\":\"B!gB0$s\",\r\n    \"Scope\":\"CDN\",\r\n    \"AppId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway}}/auth/withtoken",
+							"host": [
+								"{{Gateway}}"
+							],
+							"path": [
+								"auth",
+								"withtoken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GW auth-refreshtoken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh_token\": \"Kei86xlCz+g1+za+103ZM4GLrwLcJDBP0fWF8uIbLCPNG5HCwx7Q/UO5mGQiXj/soN81qP3f5yfTmuEm9VdAc0xbAjwUf/W4sL32ZtxCt8g=\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Gateway}}/auth/refreshtoken",
+							"host": [
+								"{{Gateway}}"
+							],
+							"path": [
+								"auth",
+								"refreshtoken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GW sms-Get-UIOptions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Gateway}}/sms/users/options",
+							"host": [
+								"{{Gateway}}"
+							],
+							"path": [
+								"sms",
+								"users",
+								"options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offshore",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "OFF_auth RefreshToken",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refresh_token\": \"jvJhs4ZV1xjdvxZ7Ia46IWcXruzLVOoovpOax/xQ9wIeuJNUmb3FOr3wyzsnQpITsntzbqpQgyxzlUZQC8ZFeJhrQ1FBQbSYtxifRWkcnz8=\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{AuthAPI}}/refreshtoken",
+									"host": [
+										"{{AuthAPI}}"
+									],
+									"path": [
+										"refreshtoken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OFF_auth Auth-API",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\":\"test\",\r\n    \"Password\":\"test\",\r\n    \"Scope\":\"BANDWIDTH\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{AuthAPI}}/authentication",
+									"host": [
+										"{{AuthAPI}}"
+									],
+									"path": [
+										"authentication"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OFF_auth Auth-SMS",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {},
+								"strictSSL": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\":\"bigboss\",\r\n    \"PassWord\":\"B!gB0$s\",\r\n    \"Scope\":\"SMS\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://amokachi.hostmycalls.com:1926/authentication",
+									"protocol": "http",
+									"host": [
+										"amokachi",
+										"hostmycalls",
+										"com"
+									],
+									"port": "1926",
+									"path": [
+										"authentication"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OFF_auth Auth-SMS-WithToken",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\":\"bigboss\",\r\n    \"PassWord\":\"B!gB0$s\",\r\n    \"Scope\":\"CDN\",\r\n    \"AppId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LoggingAPI}}/withtoken",
+									"host": [
+										"{{LoggingAPI}}"
+									],
+									"path": [
+										"withtoken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OFF_auth Auth-WP",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Email\":\"yyerebakan@hostmycalls.com\",\r\n    \"PassWord\":\"hmcGSU53.\",\r\n    \"Scope\":\"WP\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{AuthAPI}}/authentication",
+									"host": [
+										"{{AuthAPI}}"
+									],
+									"path": [
+										"authentication"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logging",
+					"item": [
+						{
+							"name": "OFF_log Logging",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"Application\":\"aaaaaaaaaaaaaa\",\r\n        \"AdditionalInfo\":\"adsada\",\r\n        \"Response\":{\r\n            \"statusCode\": \"\",\r\n            \"duration\": \"\",\r\n            \"body\": \"\",\r\n            \"headerJson\": \"\"\r\n        },\r\n        \"Request\":{\r\n            \"queryString\": \"\",\r\n            \"body\": \"\",\r\n            \"scheme\": \"\",\r\n            \"path\": \"\",\r\n            \"host\": \"\",\r\n            \"method\": \"\",\r\n            \"receptionDate\": \"\",\r\n            \"headerJson\": \"\",\r\n            \"ip\": \"\",\r\n            \"environment\": \"\",\r\n            \"user\": \"\"\r\n        }   \r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LoggingAPI}}/logging",
+									"host": [
+										"{{LoggingAPI}}"
+									],
+									"path": [
+										"logging"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OFF_log Logs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"api\": \"Authentication - Dev\",\r\n  \"startDate\": \"0001-01-01T00:00:00\",\r\n  \"endDate\": \"2022-01-01T00:00:00\",\r\n  \"ipAddress\": \"78.190.111.52\",\r\n  \"path\": \"/refreshtoken\",\r\n  \"statusCode\": \"200\",\r\n  \"rowLimit\": 100,\r\n  \"excludeOptionsEnabled\": true,\r\n  \"excludeAvailabilityAndDependencyEndpoints\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{LoggingAPI}}/logs",
+									"host": [
+										"{{LoggingAPI}}"
+									],
+									"path": [
+										"logs"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CDN",
+					"item": [
+						{
+							"name": "OFF_cdn CDN",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{CDN}}/file/1/sms-profiles/8da9cc29-4588-ec11-923b-000c296e76eb/jpg/l/YPZLPj3rDi7KBjIjeX5oEg9muz6TntBY/uoOoNGUs=.jpg",
+									"host": [
+										"{{CDN}}"
+									],
+									"path": [
+										"file",
+										"1",
+										"sms-profiles",
+										"8da9cc29-4588-ec11-923b-000c296e76eb",
+										"jpg",
+										"l",
+										"YPZLPj3rDi7KBjIjeX5oEg9muz6TntBY",
+										"uoOoNGUs=.jpg"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "SMS",
+			"item": [
+				{
+					"name": "Conversation",
+					"item": [
+						{
+							"name": "SMS_Conv GetConversationsByTelephoneNumber",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/telephonenumbers/18653148004/conversations",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"telephonenumbers",
+										"18653148004",
+										"conversations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_Conv GetConversationsDetailsById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiVXNlck5hbWUiOiJiaWdib3NzIiwiU2NvcGUiOiJTTVMiLCJleHAiOjE5MzMyMzQ3NDAsImlzcyI6Imh0dHA6Ly93ZWJydGMuaG9zdG15Y2FsbHMuY29tIiwiYXVkIjoiaHR0cDovL3dlYnJ0Yy5ob3N0bXljYWxscy5jb20ifQ.1TKojx7qbdP0Jm-KNIVJxk1v0cWz6lvvl8oPtOqSxxw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"TelephoneNumberId\":18645411801\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/conversations/details/2",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"conversations",
+										"details",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_Conv GetMessagesWithConversation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/conversations/1",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"conversations",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_Conv DeleteConversation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/conversations/3029",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"conversations",
+										"3029"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UIOptions",
+					"item": [
+						{
+							"name": "SMS_UIops Update-UIOptions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":118,\"userId\":3,\"selectedNumberId\":18653148004,\"soundNotification\":false,\"defaultCountryCodeId\":226,\"profilePictureUrl\":\"http://amokachi.hostmycalls.com:1963/1/sms_profiles/d6568b95-cec7-ec11-923d-000c296e76eb.jpg\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/users/options/3",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"users",
+										"options",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_UIops Insert-UIOptions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\":2,\r\n    \"UserId\":2,\r\n    \"SelectedNumberId\":1,\r\n    \"SoundNotification\":true,\r\n    \"SelectedPeriodId\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_5000}}/users/options",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"users",
+										"options"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_UIops Get-UIOptions",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/users/options",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"users",
+										"options"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "MessageCapture",
+					"item": [
+						{
+							"name": "SMS_msgc MessageCapture",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "test",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "test",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\t\t\"time\": \"2022-06-01T11:32:00.447Z\",\r\n\t\t\t\"type\": \"message-received\",\r\n\t\t\t\"to\": \"+18652822057\",\r\n\t\t\t\"description\": \"Incoming message received\",\r\n\t\t\t\"message\": {\r\n\t\t\t\t\"id\": \"881ebd3f-60d3-46ba-8e33-a024123bd6a0\",\r\n\t\t\t\t\"owner\": \"+18652822057\",\r\n\t\t\t\t\"applicationId\": \"033006ca-ded0-44ab-a87f-ef970a1ea845\",\r\n\t\t\t\t\"time\": \"2022-06-01T11:32:00.365Z\",\r\n\t\t\t\t\"segmentCount\": 1,\r\n\t\t\t\t\"direction\": \"in\",\r\n\t\t\t\t\"to\": [\r\n\t\t\t\t\t\"+18652822057\"\r\n\t\t\t\t],\r\n\t\t\t\t\"from\": \"+18652351131\",\r\n\t\t\t\t\"text\": \"a\"\r\n\t\t\t}\r\n\t\t}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_7013}}/bandwidthtest",
+									"host": [
+										"{{Local_7013}}"
+									],
+									"path": [
+										"bandwidthtest"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": ". . . BAZILARI DUPLICATE . . .",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "test",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "test",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\t\t\"time\": \"2022-06-01T11:32:00.447Z\",\r\n\t\t\t\"type\": \"message-received\",\r\n\t\t\t\"to\": \"+18652822057\",\r\n\t\t\t\"description\": \"Incoming message received\",\r\n\t\t\t\"message\": {\r\n\t\t\t\t\"id\": \"881ebd3f-60d3-46ba-8e33-a024123bd6a0\",\r\n\t\t\t\t\"owner\": \"+18652822057\",\r\n\t\t\t\t\"applicationId\": \"033006ca-ded0-44ab-a87f-ef970a1ea845\",\r\n\t\t\t\t\"time\": \"2022-06-01T11:32:00.365Z\",\r\n\t\t\t\t\"segmentCount\": 1,\r\n\t\t\t\t\"direction\": \"in\",\r\n\t\t\t\t\"to\": [\r\n\t\t\t\t\t\"+18652822057\"\r\n\t\t\t\t],\r\n\t\t\t\t\"from\": \"+18652351131\",\r\n\t\t\t\t\"text\": \"a\"\r\n\t\t\t}\r\n\t\t}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msgc MessageCapture Event Message",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time\": \"{{now}}\",\r\n    \"type\": \"message-s\",\r\n    \"description\": \"Incoming message received\",\r\n    \"to\": \"+18622610878\",\r\n    \"message\": {\r\n        \"id\": \"6e5e3b82-198f-4741-bb25-84c8eda3f799\",\r\n        \"time\": \"{{now}}\",\r\n        \"to\": [\r\n            \"+18622610878\",\r\n            \"+18622610879\"\r\n        ],\r\n        \"from\": \"+18653148004\",\r\n        \"text\": \"1 from mc\",\r\n        \"applicationId\": \"033006ca-de0-44ab-a87f-ef970a1ea845\",\r\n        \"media\": [\"https://www.suyat.com.tr/wp-content/uploads/2021/06/34CF0477-BED2-4948-8DC9-027AB412B1C8.jpeg\"],\r\n        \"owner\": \"+18653148004\",\r\n        \"direction\": \"out\",\r\n        \"segmentCount\": \"1\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MsgCapture}}//bandwidth",
+									"host": [
+										"{{MsgCapture}}"
+									],
+									"path": [
+										"",
+										"bandwidth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msgc MessageCapture",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time\": \"{{now}}\",\r\n    \"type\": \"message-received\",\r\n    \"description\": \"Incoming message received\",\r\n    \"to\": \"+18653148004\",\r\n    \"message\": {\r\n        \"id\": \"6e5e3b82-198f-4741-bb25-84c8eda3f799\",\r\n        \"time\": \"{{now}}\",\r\n        \"to\": [\r\n            \"+18653148004\"\r\n        ],\r\n        \"from\": \"+18652351131\",\r\n        \"text\": \"test 2\",\r\n        \"applicationId\": \"033006ca-de0-44ab-a87f-ef970a1ea845\",\r\n        \"media\": [],\r\n        \"owner\": \"+18653148004\",\r\n        \"direction\": \"in\",\r\n        \"segmentCount\": \"1\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MsgCapture}}/bandwidth",
+									"host": [
+										"{{MsgCapture}}"
+									],
+									"path": [
+										"bandwidth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msgc MessageCapture-OptOut",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time\": \"{{now}}\",\r\n    \"type\": \"message-received\",\r\n    \"description\": \"Incoming message received\",\r\n    \"to\": \"+18653148004\",\r\n    \"message\": {\r\n        \"id\": \"6e5e3b82-198f-4741-bb25-84c8eda3f799\",\r\n        \"time\": \"sdfsdf\",\r\n        \"to\": [\r\n            \"+18653148004\"\r\n        ],\r\n        \"from\": \"+18652351131\",\r\n        \"text\": \"stop forward\",\r\n        \"applicationId\": \"033006ca-de0-44ab-a87f-ef970a1ea845\",\r\n        \"media\": [],\r\n        \"owner\": \"+18653148004\",\r\n        \"direction\": \"in\",\r\n        \"segmentCount\": \"1\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_7013}}/bandwidth",
+									"host": [
+										"{{Local_7013}}"
+									],
+									"path": [
+										"bandwidth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msgc MessageCapture-OptOut",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time\": \"{{now}}\",\r\n    \"type\": \"message-received\",\r\n    \"description\": \"Incoming message received\",\r\n    \"to\": \"+18653148004\",\r\n    \"message\": {\r\n        \"id\": \"6e5e3b82-198f-4741-bb25-84c8eda3f799\",\r\n        \"time\": \"{{now}}\",\r\n        \"to\": [\r\n            \"+18653148004\"\r\n        ],\r\n        \"from\": \"+18622610878\",\r\n        \"text\": \"STOP\",\r\n        \"applicationId\": \"033006ca-de0-44ab-a87f-ef970a1ea845\",\r\n        \"media\": [],\r\n        \"owner\": \"+18622610878\",\r\n        \"direction\": \"in\",\r\n        \"segmentCount\": \"1\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_7013}}/bandwidth",
+									"host": [
+										"{{Local_7013}}"
+									],
+									"path": [
+										"bandwidth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msgc MessageCapture",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"keyword\":\"test\",\r\n  \"template\": \"insertTest\",\r\n  \"templateParameter\": \"insertTestParameter\",\r\n  \"telephoneNumber\": \"+904332423423\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MsgCapture}}/autoreply/createautoreplyrules",
+									"host": [
+										"{{MsgCapture}}"
+									],
+									"path": [
+										"autoreply",
+										"createautoreplyrules"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Messages",
+					"item": [
+						{
+							"name": "SMS_msg SendMessage",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "From",
+											"value": "+18653148004",
+											"type": "text"
+										},
+										{
+											"key": "To",
+											"value": "+18652503275",
+											"type": "text"
+										},
+										{
+											"key": "Content",
+											"value": "Hi Ahmet",
+											"type": "text"
+										},
+										{
+											"key": "MessageDate",
+											"value": "{{now}}",
+											"type": "text"
+										},
+										{
+											"key": "FormFile",
+											"type": "file",
+											"src": "/C:/Users/yusuf/Pictures/andrew-seaman-14HyRO75p24-unsplash.jpg",
+											"disabled": true
+										},
+										{
+											"key": "FromV1",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ConversationName",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "Visible",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/messages",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": ". . . BAZILARI DUPLICATE . . .",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "From",
+											"value": "+18653148004",
+											"type": "text"
+										},
+										{
+											"key": "To",
+											"value": "+18652503275",
+											"type": "text"
+										},
+										{
+											"key": "Content",
+											"value": "Hi Ahmet",
+											"type": "text"
+										},
+										{
+											"key": "MessageDate",
+											"value": "{{now}}",
+											"type": "text"
+										},
+										{
+											"key": "FormFile",
+											"type": "file",
+											"src": "/C:/Users/yusuf/Pictures/andrew-seaman-14HyRO75p24-unsplash.jpg",
+											"disabled": true
+										},
+										{
+											"key": "FromV1",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ConversationName",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "Visible",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}:{{SmsAPI}}/messages",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{SmsAPI}}",
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg InsertTemplate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"template\":\"test template\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/messages/templates",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages",
+										"templates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg SeenMessages",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"messageIds\":[323411, 323414, 323415, 323416, 323417, 323418, 323419, 323420, 323421, 323422, 323423, 323424]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/messages/seenmessages",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages",
+										"seenmessages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg Exports-V1",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/messages/export/V1",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages",
+										"export",
+										"V1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg SeenMessages",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// var authUrl = pm.environment.get('auth_api') + '/connect/token';\r",
+											"// var authUsername = pm.environment.get('email');\r",
+											"// var authPassword = pm.environment.get('password');\r",
+											"// var accessToken = pm.environment.get('access_token');\r",
+											"// var accessTokenExpiresAt = pm.environment.get('access_token_expires_at');\r",
+											"// var lastUserName =  pm.environment.get('lastUserName');\r",
+											"// var now = Math.round(Date.now() / 1000);\r",
+											"\r",
+											"// console.log(\"now: \", now)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"messageIds\":[323411, 323414, 323415, 323416, 323417, 323418, 323419, 323420, 323421, 323422, 323423, 323424]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/messages",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg DeleteMessage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/messages/deletemessages?messageId=74&&conversationId=14",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages",
+										"deletemessages"
+									],
+									"query": [
+										{
+											"key": "messageId",
+											"value": "74"
+										},
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "conversationId",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg Aggregate",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/aggregate",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"aggregate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg GetBulkMessageById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/messages/bulkmessagetasks/1",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages",
+										"bulkmessagetasks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_msg GetBulkMessageTaskDetailsById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/messages/bulkmessagetaskdetails/3",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"messages",
+										"bulkmessagetaskdetails",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "TelephoneNumbers",
+					"item": [
+						{
+							"name": "SMS_tel InsertNumber",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"number\":\"+123123\",\r\n    \"numberId\":123123,\r\n    \"alias\":\"test1\",\r\n    \"isBandwidthNumber\":true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MsgCapture}}/telephonenumbers",
+									"host": [
+										"{{MsgCapture}}"
+									],
+									"path": [
+										"telephonenumbers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_tel GetBandwidthNumbers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MsgCapture}}/telephonenumbers/bandwidth",
+									"host": [
+										"{{MsgCapture}}"
+									],
+									"path": [
+										"telephonenumbers",
+										"bandwidth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_tel DeleteUsersTelephoneNumber",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/user/21/telephonenumber/905453315485",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"user",
+										"21",
+										"telephonenumber",
+										"905453315485"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contacts",
+					"item": [
+						{
+							"name": "SMS_con GetContacts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/contactlist/1/contacts",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"contactlist",
+										"1",
+										"contacts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OptOut",
+					"item": [
+						{
+							"name": "SMS_opt Delete-OptOutRule",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/optout/18653148004/18622610878",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"optout",
+										"18653148004",
+										"18622610878"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_opt GetOptOutRules",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/optout/18653148004",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"optout",
+										"18653148004"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_opt GetOptOutRules",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/optout/18622610878",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"optout",
+										"18622610878"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_opt GetBlockedContacts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/optout/receiver/18653148004",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"optout",
+										"receiver",
+										"18653148004"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_opt BlockContacts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"senders\":[18653148004],\r\n    \"receiver\":18652351131\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/optout",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"optout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Fakewidth",
+					"item": [
+						{
+							"name": "SMS_fake Fakewidth",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"from\" : \"+12012074860\",\r\n    \"text\" : \"test fakewidth\",\r\n    \"applicationId\" : \"1123123\",\r\n    \"media\" : [\"\"],\r\n    \"to\" : \"+12012087310\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Fakewidth}}/fakewidth",
+									"host": [
+										"{{Fakewidth}}"
+									],
+									"path": [
+										"fakewidth"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notifications",
+					"item": [
+						{
+							"name": "SMS_not Notification",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"Message from Postman 3!\",\r\n    \"action\": \"action_a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_7012}}/api/notifications/requests",
+									"host": [
+										"{{Local_7012}}"
+									],
+									"path": [
+										"api",
+										"notifications",
+										"requests"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Billing",
+					"item": [
+						{
+							"name": "SMS_bil GetBillingDetails",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BulkMessaging",
+					"item": [
+						{
+							"name": "SMS_bulk InsertBulkMessageTasks",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"From\":\"+18653148004\",\r\n    \"Document\":\"number,alias\\r\\n18652351123,Gabe\\r\\n18652351123,Girl\\r\\n18652351132,Khabib\\r\\n18652351131,Pa\",\r\n    \"TemplateId\":1,\r\n    \"Name\":\"testName\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_5000}}/messages/bulkmessagetasks",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"messages",
+										"bulkmessagetasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_bulk GetBulkMessageTasks",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Local_5000}}/messages/bulkmessagetasks/2",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"messages",
+										"bulkmessagetasks",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_bulk GetBulkMessageTaskDetails",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Local_5000}}/messages/bulkmessagetaskdetails/2",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"messages",
+										"bulkmessagetaskdetails",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MessageStatus",
+					"item": [
+						{
+							"name": "SMS_msgst GetMessageStatus",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Local_5000}}/messagestatus",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"messagestatus"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "SMS_user GetAdminsUsers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/user",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_user InsertUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"test\",\r\n    \"surName\" : \"testSurname\",\r\n    \"email\": \"test@email.com\",\r\n    \"userName\" : \"testuser_a\",\r\n    \"password\" : \"testPassword2\",\r\n    \"isAdmin\" : false,\r\n    \"contactNumber\": \"1\",\r\n    \"hasAppointmentAccess\":false,\r\n    \"immediateNotification\":false,\r\n    \"receivesAllEmail\":false,\r\n    \"active\": true,\r\n    \"organizationId\": 1 \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SmsAPI}}/user",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_user UpdateUser",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set(\"now\", moment.utc().toJSON());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : 19,\r\n    \"name\" : \"testupdated\",\r\n    \"surName\" : \"testSurnameupdated\",\r\n    \"Email\": \"testupdated@email.com\",\r\n    \"userName\" : \"testupdated\",\r\n    \"password\" : \"testPasswordupdated\",\r\n    \"isAdmin\" : true,\r\n    \"ContactNumber\": \"1\",\r\n    \"hasAppointmentAccess\":true,\r\n    \"immediateNotification\":true,\r\n    \"receivesAllEmail\":true,\r\n    \"LastEmailSentDate\":\"{{now}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Local_5000}}/user/update",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"user",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_user InsertUsersTelephoneNumber",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{Local_5000}}/user/1/telephonenumber/2",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"user",
+										"1",
+										"telephonenumber",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SMS_user DeleteUsersTelephoneNumber",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Local_5000}}/user/1/telephonenumber/2",
+									"host": [
+										"{{Local_5000}}"
+									],
+									"path": [
+										"user",
+										"1",
+										"telephonenumber",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "V2Import",
+					"item": [
+						{
+							"name": "SMS_v2 SetMessageImported",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{SmsAPI}}/V2Import/setmessageimported/2",
+									"host": [
+										"{{SmsAPI}}"
+									],
+									"path": [
+										"V2Import",
+										"setmessageimported",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Aggregate",
+					"item": []
+				},
+				{
+					"name": "TEST SCENARIOS",
+					"item": [
+						{
+							"name": "CreateUser-CheckMsgs-DeleteUser",
+							"item": [
+								{
+									"name": "start",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"console.log(pm.collectionVariables.get(\"new_created_user_ID\"))\r",
+													"\r",
+													"pm.collectionVariables.set(\"new_created_user_ID\", parseInt(pm.collectionVariables.get(\"new_created_user_ID\")) +1 ) \r",
+													"\r",
+													"console.log(pm.collectionVariables.get(\"new_created_user_ID\"))\r",
+													"\r",
+													"console.log(\"............ TEST STARTED ..................\")\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "www.google.com",
+											"host": [
+												"www",
+												"google",
+												"com"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "OFF_auth Receive Authorization",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// RECEIVE NEW AUTHOURIZATION TOKEN //\r",
+													"\r",
+													"var token = pm.response.json().token\r",
+													"pm.collectionVariables.set(\"token\", token);\r",
+													"console.log(\"..............................\")\r",
+													"\r",
+													"console.log(\"STEP1: NEW AUTH TOKEN RECEIVED:\")\r",
+													"console.log(\"NEW TOKEN:\", token)\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"strictSSL": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"UserName\":\"bigboss\",\r\n    \"PassWord\":\"B!gB0$s\",\r\n    \"Scope\":\"SMS\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{AuthAPI}}/authentication",
+											"host": [
+												"{{AuthAPI}}"
+											],
+											"path": [
+												"authentication"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "SMS_user Create New User",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// CREATE NEW USER (WITH DETAILS IN REQUEST BODY) //\r",
+													"// NOTE:  DELETE USER INCREMENTS ID BY ONE ! NECESSARY\r",
+													"\r",
+													"console.log(pm.response.json())\r",
+													"var id = pm.response.json().id\r",
+													"\r",
+													"pm.collectionVariables.set(\"new_created_user_ID\", id);\r",
+													"console.log(\"..............................\")\r",
+													"\r",
+													"console.log(\"STEP 2: NEW USER CREATED ID\", pm.response.json().id)\r",
+													"\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\" : \"test\",\r\n    \"surName\" : \"testSurname\",\r\n    \"email\": \"test@email.com\",\r\n    \"userName\" : \"testuser{{new_created_user_ID}}\",\r\n    \"password\" : \"testPassword\",\r\n    \"isAdmin\" : false,\r\n    \"contactNumber\": \"1\",\r\n    \"hasAppointmentAccess\":false,\r\n    \"immediateNotification\":false,\r\n    \"receivesAllEmail\":false,\r\n    \"active\": true,\r\n    \"organizationId\": 1 \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{SmsAPI}}/user",
+											"host": [
+												"{{SmsAPI}}"
+											],
+											"path": [
+												"user"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "SMS_user Add Phone Number",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"console.log(\"..............................\")\r",
+													"\r",
+													"console.log(\"STEP 3: ADDED PHONE NUMBER TO USER\", \"18653148004\")\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// ORIGINAL BODY:  \r",
+													"// { \r",
+													"//     \"numberId\" :  18653148004\r",
+													"// }\r",
+													"\r",
+													"var new_phone_number = \"18653148004\"\r",
+													"\r",
+													"pm.collectionVariables.set(\"new_created_user_phone_number\", new_phone_number )\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"numberId\" :  {{new_created_user_phone_number}}\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{SmsAPI}}/User/{{new_created_user_ID}}/telephoneNumber",
+											"host": [
+												"{{SmsAPI}}"
+											],
+											"path": [
+												"User",
+												"{{new_created_user_ID}}",
+												"telephoneNumber"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "SMS_user Retrieve Conversations",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"console.log(\"..............................\")\r",
+													"\r",
+													"console.log(\"STEP 4: RETRIEVED CONVERSATIONS BY PHONE NUMBER\", pm.response.json())\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{SmsAPI}}/telephoneNumbers/{{new_created_user_phone_number}}/conversations/5",
+											"host": [
+												"{{SmsAPI}}"
+											],
+											"path": [
+												"telephoneNumbers",
+												"{{new_created_user_phone_number}}",
+												"conversations",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "SMS_user Delete User By ID",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"console.log(\"..............................\")\r",
+													"\r",
+													"console.log(\"STEP 5: DELETED NEWLY CREATED USER\")\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{SmsAPI}}/User/{{new_created_user_ID}}",
+											"host": [
+												"{{SmsAPI}}"
+											],
+											"path": [
+												"User",
+												"{{new_created_user_ID}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "CreateOrganization-AddPhone-DeletePhone",
+							"item": [
+								{
+									"name": "OFF_auth Receive Authorization",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// RECEIVE NEW AUTHOURIZATION TOKEN //\r",
+													"var token = pm.response.json().token\r",
+													"var token_short = token.substring(0,80)\r",
+													"\r",
+													"pm.collectionVariables.set(\"token\", token);\r",
+													"\r",
+													"console.log(\"..............................\")\r",
+													"\r",
+													"console.log(\"STEP1: NEW AUTH TOKEN RECEIVED:\")\r",
+													"console.log(\"NEW TOKEN:\", token_short + \"...\")\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {},
+										"strictSSL": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"UserName\":\"bigboss\",\r\n    \"PassWord\":\"B!gB0$s\",\r\n    \"Scope\":\"SMS\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{AuthAPI}}/authentication",
+											"host": [
+												"{{AuthAPI}}"
+											],
+											"path": [
+												"authentication"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Options Request",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 204\", function () {\r",
+													"    pm.response.to.have.status(204);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "OPTIONS",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+												"type": "text"
+											},
+											{
+												"key": "Access-Control-Request-Headers",
+												"value": "authorization",
+												"type": "text"
+											},
+											{
+												"key": "Access-Control-Request-Method",
+												"value": "POST",
+												"type": "text"
+											},
+											{
+												"key": "Host",
+												"value": "amokachi.hostmycalls.com:6761",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Origin",
+												"value": "http://amokachi.hostmycalls.com",
+												"type": "text"
+											},
+											{
+												"key": "Referer",
+												"value": "http://amokachi.hostmycalls.com/",
+												"type": "text"
+											},
+											{
+												"key": "Sec-Fetch-Mode",
+												"value": "cors",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://amokachi.hostmycalls.com:6761/sms/organizations",
+											"protocol": "http",
+											"host": [
+												"amokachi",
+												"hostmycalls",
+												"com"
+											],
+											"port": "6761",
+											"path": [
+												"sms",
+												"organizations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Organization",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//INCREMENT COLLECTION VARIABLE \r",
+													"var last_organization_number = parseInt(pm.collectionVariables.get(\"new_created_organization_number\"))\r",
+													"pm.collectionVariables.set(\"new_created_organization_number\",last_organization_number+1)\r",
+													"\r",
+													"//GET ORGANIZATION ID FROM RESPONSE\r",
+													"console.log(pm.response.json())\r",
+													"var new_company_ID = pm.response.json().id\r",
+													"pm.collectionVariables.set(\"new_organization_ID\", new_company_ID)\r",
+													"\r",
+													"console.log(\"..........CREATE NEW ORGANIZATION...............\")\r",
+													"console.log(\"new organization created.  ID: \", new_company_ID, \"Name: \",pm.response.json().name )\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Host",
+												"value": "amokachi.hostmycalls.com:6761",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Origin",
+												"value": "http://amokachi.hostmycalls.com",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Referer",
+												"value": "http://amokachi.hostmycalls.com/",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "Id",
+													"value": "1",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "Name",
+													"value": "test{{new_created_organization_number}}",
+													"type": "text"
+												},
+												{
+													"key": "CustomerNumber",
+													"value": "ttttt",
+													"type": "text"
+												},
+												{
+													"key": "DefaultContactListName",
+													"value": "contact1",
+													"type": "text"
+												},
+												{
+													"key": "HasWidgetAccess",
+													"value": "false",
+													"type": "text"
+												},
+												{
+													"key": "FormFile",
+													"type": "file",
+													"src": "/C:/Users/sinan/OneDrive/Masaüstü/test2.jpg"
+												},
+												{
+													"key": "DefaultContactListId",
+													"value": "155",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "http://amokachi.hostmycalls.com:6761/sms/organizations",
+											"protocol": "http",
+											"host": [
+												"amokachi",
+												"hostmycalls",
+												"com"
+											],
+											"port": "6761",
+											"path": [
+												"sms",
+												"organizations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Retrieve Organization Data",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"console.log(\"..........RETRIEVE ORGANIZATION DATA...............\")\r",
+													"console.log(\"organization id: \",pm.response.json().id)\r",
+													"console.log(\"organization name: \",pm.response.json().name)\r",
+													"console.log(\"organization customer number: \",pm.response.json().customerNumber)\r",
+													"console.log(\"organization widget access: \",pm.response.json().hasWidgetAccess)"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Host",
+												"value": "amokachi.hostmycalls.com:6761",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Origin",
+												"value": "http://amokachi.hostmycalls.com",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Referer",
+												"value": "http://amokachi.hostmycalls.com/",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://amokachi.hostmycalls.com:6761/sms/organizations/{{new_organization_ID}}",
+											"protocol": "http",
+											"host": [
+												"amokachi",
+												"hostmycalls",
+												"com"
+											],
+											"port": "6761",
+											"path": [
+												"sms",
+												"organizations",
+												"{{new_organization_ID}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Phone Number",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"console.log(\"..........ADD TELEPHONE NUMBER TO ORGANIZATION...............\")\r",
+													"var new_phone_number = pm.response.json().numberId\r",
+													"console.log(\"phone number added: \", new_phone_number)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Host",
+												"value": "amokachi.hostmycalls.com:6761",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Origin",
+												"value": "http://amokachi.hostmycalls.com",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Referer",
+												"value": "http://amokachi.hostmycalls.com/",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"NumberId\": \"{{new_phone_number}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://amokachi.hostmycalls.com:6761/sms/organizations/{{new_organization_ID}}/telephoneNumbers",
+											"protocol": "http",
+											"host": [
+												"amokachi",
+												"hostmycalls",
+												"com"
+											],
+											"port": "6761",
+											"path": [
+												"sms",
+												"organizations",
+												"{{new_organization_ID}}",
+												"telephoneNumbers"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Phone Number",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"console.log(\"..........DELETE TELEPHONE NUMBER FROM ORGANIZATION...............\")\r",
+													"var deleted_phone_number = pm.response.json().numberId\r",
+													"console.log(\"phone number deleted: \", deleted_phone_number)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Host",
+												"value": "amokachi.hostmycalls.com:6761",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Origin",
+												"value": "http://amokachi.hostmycalls.com",
+												"type": "text",
+												"disabled": true
+											},
+											{
+												"key": "Referer",
+												"value": "http://amokachi.hostmycalls.com/",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://amokachi.hostmycalls.com:6761/sms/organizations/{{new_organization_ID}}/telephoneNumbers/{{new_phone_number}}",
+											"protocol": "http",
+											"host": [
+												"amokachi",
+												"hostmycalls",
+												"com"
+											],
+											"port": "6761",
+											"path": [
+												"sms",
+												"organizations",
+												"{{new_organization_ID}}",
+												"telephoneNumbers",
+												"{{new_phone_number}}"
+											],
+											"query": [
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "PM2",
+			"item": [
+				{
+					"name": "PM2 start tests",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "eyJhbGciOiJI",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Local_3009}}",
+							"host": [
+								"{{Local_3009}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PM2 test amokachi",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "eyJhbGciOiJI",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Local_3009}}/test",
+							"host": [
+								"{{Local_3009}}"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Props",
+			"item": [
+				{
+					"name": "PROPS DecrypteService.aspx",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Password\":\"5345ba775efcc4\",\"Id\":\"ps2depfaOKQHeaiheS3OVw==\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Local_49300}}/WebRTCDecryptService.aspx",
+							"host": [
+								"{{Local_49300}}"
+							],
+							"path": [
+								"WebRTCDecryptService.aspx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "DOC Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "AppId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "Container",
+									"value": "18653148004",
+									"type": "text"
+								},
+								{
+									"key": "IncludeFileUrl",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "Document",
+									"type": "file",
+									"src": "/C:/Users/eonal/Desktop/oney.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DocMgmtAPI}}/documents",
+							"host": [
+								"{{DocMgmtAPI}}"
+							],
+							"path": [
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DOC Convert",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiVXNlck5hbWUiOiJiaWdib3NzIiwiSXNBZG1pbiI6IlRydWUiLCJJc1N1cGVyVXNlciI6IlRydWUiLCJBY3RpdmUiOiJUcnVlIiwiU2NvcGUiOiJTTVMiLCJleHAiOjE2Mzg1NjIzNjgsImlzcyI6Imh0dHA6Ly93ZWJydGMuaG9zdG15Y2FsbHMuY29tIiwiYXVkIjoiaHR0cDovL3dlYnJ0Yy5ob3N0bXljYWxscy5jb20ifQ.b9fvt7FdFbcyRJGO4ZL0ScB1tz9t1gHZFnKJG7iE4QE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Paths\":[\"/1/16546846546-18653148004/67120681-2654-ec11-9238-000c296e76eb.jpg\"],\r\n    \"ConvertToFileUrl\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DocMgmtAPI}}/documents/convert",
+							"host": [
+								"{{DocMgmtAPI}}"
+							],
+							"path": [
+								"documents",
+								"convert"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// /*  If no access token OR acces token expired OR username is different from last username",
+					"// then refresh authorization (send (username, password, scope) & update (token, refresh token, expiry)) */",
+					"",
+					"// console.log(\"CURRENT ENVIRONMENT NAME: \", pm.environment.name)",
+					"// console.log(\"POSTMAN API KEY \", pm.variables.get(\"POSTMAN API KEY\"))",
+					"",
+					"// // Variables for sending request",
+					"// var authUrl = pm.environment.get(\"AuthAPI\") + \"/authentication\"",
+					"// var authUsername = pm.environment.get('username');",
+					"// var authPassword = pm.environment.get('password');",
+					"// var scope = \"SMS\"",
+					"",
+					"// // Variables to refresh",
+					"// var accessToken = pm.environment.get(\"accessToken\"); ",
+					"// var refreshToken = pm.environment.get(\"refreshToken\")",
+					"// var expiryDate = pm.environment.get(\"accessTokenExpiryDate\");",
+					"// var lastUserName =  pm.environment.get('lastUserName');",
+					"// var now = Date.now();",
+					"// // var now = Math.round(Date.now() / 1000);",
+					"",
+					"// if (    accessToken == null ",
+					"//     ||  expiryDate == null ",
+					"//     ||  now > Date.parse(expiryDate) ",
+					"//     ||  authUsername != lastUserName) ",
+					"",
+					"// {",
+					"//     console.log(\"HMC PRE-REQUEST: Sending authentication request...\")",
+					"//     pm.sendRequest({",
+					"//         url: authUrl,",
+					"//         method: 'POST',",
+					"//     header: {",
+					"//                 'Content-Type': 'application/json',",
+					"//             },",
+					"//     body:   {",
+					"//         mode: 'raw',",
+					"//         raw: JSON.stringify({",
+					"//             \"UserName\":authUsername,",
+					"//             \"PassWord\":authPassword,",
+					"//             \"Scope\": scope,",
+					"//         })",
+					"//     }",
+					"//     }, (err, res) => {",
+					"//             if(!err){",
+					"",
+					"//             // retrieve response data into variables",
+					"//             accessToken = res.json().token;",
+					"//             refreshToken = res.json().refresh_token;",
+					"//             expiryDate = res.json().expiry_date;",
+					"",
+					"//             // update environment variables with response data",
+					"//             pm.environment.set(\"accessToken\", accessToken);",
+					"//             pm.environment.set(\"accessTokenExpiryDate\", expiryDate);",
+					"//             pm.environment.set(\"refreshToken\", refreshToken);",
+					"//             pm.environment.set(\"lastUserName\", authUsername);",
+					"//             }",
+					"//         });",
+					"// }",
+					"// else {",
+					"//     console.log(\"HMC PRE-REQUEST: Already authenticated...\")",
+					"// }",
+					"",
+					"",
+					"",
+					"// // if (true ) {",
+					"// //     pm.sendRequest({",
+					"// //         url: authUrl,",
+					"// //         method: 'POST',",
+					"// //         header: 'Content-Type: application/x-www-form-urlencoded',",
+					"// //         body: {",
+					"// //             mode: 'urlencoded',",
+					"// //             urlencoded: [",
+					"// //                 { key: 'client_id', value: 'native-app' },",
+					"// //                 { key: 'client_secret', value: 'native-chats-client-dev-secret' },",
+					"// //                 { key: 'grant_type', value: 'password' },",
+					"// //                 { key: 'username', value: authUsername },",
+					"// //                 { key: 'password', value: authPassword },",
+					"// //             ]",
+					"// //         }",
+					"// //     }, (err, res) => {",
+					"// //             pm.environment.set(\"access_token\", res.json().access_token);",
+					"// //             pm.environment.set(\"access_token_expires_at\", now + res.json().expires_in);",
+					"// //             pm.environment.set(\"lastUserName\", authUsername);",
+					"// //         });",
+					"// // }"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "new_created_user_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "new_created_user_phone_number",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "new_created_organization_number",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "new_organization_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "new_phone_number",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
